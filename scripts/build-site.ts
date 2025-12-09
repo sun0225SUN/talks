@@ -32,6 +32,11 @@ async function buildSite() {
     const slideDir = path.join(rootDir, folder, 'src')
     const slideDistDir = path.join(distDir, folder)
 
+    if (!existsSync(path.join(slideDir, 'slides.md'))) {
+      console.warn(`Skipping ${folder}: slides.md not found`)
+      continue
+    }
+
     // Read title from slides.md
     let title = folder
     try {
