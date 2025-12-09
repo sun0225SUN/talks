@@ -21,7 +21,7 @@ async function buildSite() {
   const folders = (await fs.readdir(rootDir, { withFileTypes: true }))
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
-    .filter(folder => folder.match(/^\d{4}-/)) // Match YYYY-MM-DD or similar
+    .filter(folder => folder.match(/^\d+/)) // Match YYYY-MM-DD or YYMMDD
     .sort((a, b) => -a.localeCompare(b)) // Newest first
 
   const slidesInfo = []
@@ -49,7 +49,11 @@ async function buildSite() {
       console.warn(`Could not read title for ${folder}`)
     }
 
-    slidesInfo.push({ folder, title })
+    let date = folder
+    if (/^\d{6}$/.test(folder)) {
+      date = `20${folder.slice(0, 2)}-${folder.slice(2, 4)}-${folder.slice(4, 6)}`
+    }
+    slidesInfo.push({ folder, title, date })
 
     // Build using slidev CLI directly to control output and base
     // We assume 'pnpm' is available and dependencies are installed
@@ -78,7 +82,7 @@ async function buildSite() {
       <div class="slide-item">
         <a href="/${info.folder}/" class="slide-link">
           <div class="slide-title">${info.title}</div>
-          <div class="slide-date">${info.folder}</div>
+          <div class="slide-date">${info.date}</div>
         </a>
       </div>
     `).join('')

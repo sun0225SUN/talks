@@ -87,7 +87,7 @@ importers:
         specifier: ^2.0.26
         version: 2.0.29(typescript@5.5.4)
 
-  2025-12-27/src:
+  251227/src:
     dependencies:
       '@slidev/theme-seriph':
         specifier: ^0.25.0

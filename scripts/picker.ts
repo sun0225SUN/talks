@@ -8,7 +8,7 @@ async function startPicker(args: string[]) {
   const folders = (await fs.readdir(new URL('..', import.meta.url), { withFileTypes: true }))
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
-    .filter(folder => folder.match(/^\d{4}-/))
+    .filter(folder => folder.match(/^\d+/))
     .sort((a, b) => -a.localeCompare(b))
 
   const result = (args.includes('-y') || process.env.CI)
