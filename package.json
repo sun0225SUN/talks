@@ -5,7 +5,8 @@
   "packageManager": "pnpm@9.5.0",
   "scripts": {
     "dev": "pnpm run picker dev --open",
-    "build": "rimraf dist && pnpm run picker build",
+    "build": "esno scripts/build-site.ts",
+    "build:single": "rimraf dist && pnpm run picker build",
     "build:all": "rimraf dist && pnpm -r run build",
     "export": "pnpm run picker export",
     "typecheck": "vue-tsc --noEmit",
