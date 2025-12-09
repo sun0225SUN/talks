@@ -1,0 +1,50 @@
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  line-height: 1.5;
+  color: #333;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #111;
+}
+.slide-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.slide-item {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.slide-item:hover {
+  border-color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+.slide-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 1.5rem;
+}
+.slide-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+.slide-date {
+  font-size: 0.875rem;
+  color: #666;
+  font-family: monospace;
+}

@@ -63,39 +63,24 @@ async function buildSite() {
 
   // 4. Generate Index Page
   console.log('\nGenerating index page...')
-  const indexHtml = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talks List</title>
-  <style>
-    body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.5; color: #333; }
-    h1 { text-align: center; margin-bottom: 2rem; color: #111; }
-    .slide-list { list-style: none; padding: 0; display: grid; gap: 1rem; }
-    .slide-item { background: #fff; border: 1px solid #eaeaea; border-radius: 8px; transition: all 0.2s; }
-    .slide-item:hover { border-color: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transform: translateY(-1px); }
-    .slide-link { text-decoration: none; color: inherit; display: block; padding: 1.5rem; }
-    .slide-title { font-size: 1.25rem; font-weight: 600; color: #000; margin-bottom: 0.5rem; }
-    .slide-date { font-size: 0.875rem; color: #666; font-family: monospace; }
-  </style>
-</head>
-<body>
-  <h1>Talks</h1>
-  <div class="slide-list">
-    ${slidesInfo.map(info => `
+  const templatePath = path.resolve(__dirname, 'index.template.html')
+  const cssPath = path.resolve(__dirname, 'index.css')
+  
+  let indexHtml = await fs.readFile(templatePath, 'utf-8')
+  const cssContent = await fs.readFile(cssPath, 'utf-8')
+
+  const slidesListHtml = slidesInfo.map(info => `
       <div class="slide-item">
         <a href="/${info.folder}/" class="slide-link">
           <div class="slide-title">${info.title}</div>
           <div class="slide-date">${info.folder}</div>
         </a>
       </div>
-    `).join('')}
-  </div>
-</body>
-</html>
-  `
+    `).join('')
+
+  indexHtml = indexHtml
+    .replace('<!-- INJECT_SLIDES_LIST -->', slidesListHtml)
+    .replace('/* INJECT_CSS */', cssContent)
 
   await fs.writeFile(path.join(distDir, 'index.html'), indexHtml)
   console.log('Build complete! Output directory: dist/')
