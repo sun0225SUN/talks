@@ -10,7 +10,7 @@ const distDir = path.resolve(rootDir, 'dist')
 
 async function buildSite() {
   console.log('Building site...')
-  
+
   // 1. Clean dist
   if (existsSync(distDir)) {
     await fs.rm(distDir, { recursive: true })

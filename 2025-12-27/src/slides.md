@@ -7,7 +7,7 @@ theme: seriph
 # background: https://cover.sli.dev
 
 # some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: 我的奋斗：年轻人一定要出去闯一闯，哪怕碰的鼻青脸肿！
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
@@ -100,12 +100,12 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
 
 ## Keyboard Shortcuts
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
+|                                                     |                             |
+| --------------------------------------------------- | --------------------------- |
+| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
 | <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+| <kbd>up</kbd>                                       | previous slide              |
+| <kbd>down</kbd>                                     | next slide                  |
 
 <!-- https://sli.dev/guide/animations.html#click-animation -->
 <img
