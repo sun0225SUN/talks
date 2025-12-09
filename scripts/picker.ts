@@ -11,7 +11,7 @@ async function startPicker(args: string[]) {
     .filter(folder => folder.match(/^\d{4}-/))
     .sort((a, b) => -a.localeCompare(b))
 
-  const result = args.includes('-y')
+  const result = (args.includes('-y') || process.env.CI)
     ? { folder: folders[0] }
     : await prompts([
       {
