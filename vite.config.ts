@@ -3,6 +3,9 @@ import '@slidev/cli'
 import MarkdownItMagicLink from 'markdown-it-magic-link'
 
 export default defineConfig({
+  build: {
+    chunkSizeWarningLimit: 2000,
+  },
   slidev: {
     markdown: {
       markdownItSetup(md) {

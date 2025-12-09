@@ -36,6 +36,13 @@ async function startPicker(args: string[]) {
       cwd: new URL(`../${result.folder}/src`, import.meta.url),
       stdio: 'inherit',
     })
+
+    if (args.includes('build')) {
+      const distPath = fileURLToPath(new URL(`../${result.folder}/dist`, import.meta.url))
+      const rootDistPath = fileURLToPath(new URL('../dist', import.meta.url))
+      console.log(`Copying build output from ${distPath} to ${rootDistPath}...`)
+      await fs.cp(distPath, rootDistPath, { recursive: true })
+    }
   }
 }
 
